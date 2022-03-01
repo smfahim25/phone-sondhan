@@ -46,13 +46,16 @@ const displayPhoneDetails = phone => {
         <img src="${phone.image}" class="w-75 mx-auto card-img-top p-2" alt="">
             <div class="card-body">
                 <h5 class="card-title">${phone.name}</h5>
-                <p class="card-text mb-0"> <span class="fw-bold">Brand:</span> ${phone.brand}</p>
-                <p class="card-text mb-0"><span class="fw-bold">Release Date:</span> ${phone.releaseDate ? phone.releaseDate : 'Not Found'}</p>
+                <p class="card-text mb-0"> <span class="fw-bold">Brand:</span> ${phone.brand}.</p>
+                <p class="card-text mb-0"><span class="fw-bold">Release Date:</span> ${phone.releaseDate ? phone.releaseDate : 'Date Not Found'}.</p>
                 <h4 class="fw-bolder mt-2">Main Features:</h4>
-                <p class="card-text mb-0"><span class="fw-bold">Chipset:</span> ${phone.mainFeatures.chipSet}</p>
-                <p class="card-text mb-0"><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}</p>
-                <p class="card-text mb-0"><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}</p>
-                <p class="card-text mb-0"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}</p> 
+                <p class="card-text mb-0"><span class="fw-bold">Chipset:</span> ${phone.mainFeatures.chipSet}.</p>
+                <p class="card-text mb-0"><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}.</p>
+                <p class="card-text mb-0"><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}.</p>
+                <p class="card-text mb-0"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}.</p> 
+                <p class="card-text mb-0"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.sensors.join()}.</p>
+                <h4 class="fw-bolder mt-2">Others Features:</h4>
+
             </div>
     `;
     phoneDetails.appendChild(div);
