@@ -10,8 +10,9 @@ const searchPhone = () => {
         .then(data => displaySearchResult(data.data))
 }
 const displaySearchResult = phones => {
+    document.getElementById('phone-details').innerHTML = '';
     const searchResult = document.getElementById('search-result');
-    searchResult.textContent = '';
+    searchResult.innerHTML = '';
     phones.forEach(phone => {
         const div = document.createElement('div');
         div.classList.add('col');
@@ -40,7 +41,7 @@ const displayPhoneDetails = phone => {
     const phoneDetails = document.getElementById('phone-details');
     const div = document.createElement('div');
     div.classList.add('card');
-    phoneDetails.textContent = '';
+    phoneDetails.innerHTML = '';
     div.innerHTML = `
         <img src="${phone.image}" class="w-75 mx-auto card-img-top p-2" alt="">
             <div class="card-body">
@@ -51,7 +52,7 @@ const displayPhoneDetails = phone => {
                 <p class="card-text mb-0"><span class="fw-bold">Chipset:</span> ${phone.mainFeatures.chipSet}</p>
                 <p class="card-text mb-0"><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}</p>
                 <p class="card-text mb-0"><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}</p>
-                <p class="card-text mb-0"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}</p>
+                <p class="card-text mb-0"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}</p> 
             </div>
     `;
     phoneDetails.appendChild(div);
