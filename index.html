@@ -16,13 +16,16 @@
 </head>
 
 <body>
-    <h1 class="text-center mt-5 fw-bolder mb-5">Search Your Phone</h1>
+    <h1 class="text-center mt-5 fw-bolder mb-4">Search Your Phone</h1>
     <!-- phone search area  -->
     <div class="input-group mb-5 w-50 mx-auto">
         <input id="search-field" type="text" class="form-control" placeholder="Search your phone"
             aria-label="Recipient's username" aria-describedby="button-addon2">
         <button onclick="searchPhone()" class="btn btn-outline-secondary" type="button" id="button-search"><i
                 class="fas fa-search"></i></button>
+    </div>
+    <!-- phone details show  -->
+    <div id="phone-details" class="w-25 mx-auto mb-5">
     </div>
     <!-- phone search result  -->
     <div id="search-result" class="container row row-cols-1 row-cols-md-3 g-4 mx-auto">
