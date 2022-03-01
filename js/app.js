@@ -10,12 +10,11 @@ const searchPhone = () => {
         .then(data => displaySearchResult(data.data))
 }
 const displaySearchResult = phones => {
+    const firstTwenty = phones.slice(0, 20);
     document.getElementById('phone-details').innerHTML = '';
     const searchResult = document.getElementById('search-result');
-    const result20 = [searchResult];
-    const slice = result20.slice(0, 20);
     searchResult.innerHTML = '';
-    phones.forEach(phone => {
+    firstTwenty.forEach(phone => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = ` 
@@ -49,7 +48,7 @@ const displayPhoneDetails = phone => {
             <div class="card-body mx-auto">
                 <h5 class="card-title">${phone.name}</h5>
                 <p class="card-text mb-0"> <span class="fw-bold">Brand:</span> ${phone.brand}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">Release Date:</span> ${phone.releaseDate ? phone.releaseDate : 'Date Not Found'}.</p>
+                <p class="card-text mb-0"><span class="fw-bold">Release Date:</span> ${phone.releaseDate ? phone.releaseDate : 'Release Date Not Found'}.</p>
                 <h4 class="fw-bolder mt-2">Main Features:</h4>
                 <p class="card-text mb-0"><span class="fw-bold">Chipset:</span> ${phone.mainFeatures.chipSet}.</p>
                 <p class="card-text mb-0"><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}.</p>
