@@ -11,8 +11,8 @@ const searchPhone = () => {
 }
 const displaySearchResult = phones => {
     const searchResult = document.getElementById('search-result');
+    searchResult.textContent = '';
     phones.forEach(phone => {
-        // console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = ` 
@@ -40,11 +40,14 @@ const displayPhoneDetails = phone => {
     const phoneDetails = document.getElementById('phone-details');
     const div = document.createElement('div');
     div.classList.add('card');
+    phoneDetails.textContent = '';
     div.innerHTML = `
-        <img class="container w-75 p-3" src="${phone.image}" class="card-img-top" alt="iphone images">
-        <div class="card-body">
-        <p class="card-text"></p>
-        </div>
+        <img class="container w-50 p-3" src="${phone.image}" class="card-img-top" alt="iphone images">
+            <div class="card-body">
+                <h5 class="card-title">${phone.name}</h5>
+                <p class="card-text mb-0"> <span class="fw-bold">Brand:</span> ${phone.brand}</p>
+                <p class="card-text"><span class="fw-bold">Release Date:</span> ${phone.releaseDate}</p>
+            </div>
     `;
     phoneDetails.appendChild(div);
 }
