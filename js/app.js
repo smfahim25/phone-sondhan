@@ -16,7 +16,7 @@ const displaySearchResult = phones => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = ` 
-        <div class="card h-100">
+        <div class="card h-100 shadow rounded">
             <img class="container w-75 p-3" src="${phone.image}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">${phone.phone_name}</h5>
@@ -42,11 +42,16 @@ const displayPhoneDetails = phone => {
     div.classList.add('card');
     phoneDetails.textContent = '';
     div.innerHTML = `
-        <img class="container w-50 p-3" src="${phone.image}" class="card-img-top" alt="iphone images">
+        <img src="${phone.image}" class="w-75 mx-auto card-img-top p-2" alt="">
             <div class="card-body">
                 <h5 class="card-title">${phone.name}</h5>
                 <p class="card-text mb-0"> <span class="fw-bold">Brand:</span> ${phone.brand}</p>
-                <p class="card-text"><span class="fw-bold">Release Date:</span> ${phone.releaseDate}</p>
+                <p class="card-text mb-0"><span class="fw-bold">Release Date:</span> ${phone.releaseDate ? phone.releaseDate : 'Not Found'}</p>
+                <h4 class="fw-bolder mt-2">Main Features:</h4>
+                <p class="card-text mb-0"><span class="fw-bold">Chipset:</span> ${phone.mainFeatures.chipSet}</p>
+                <p class="card-text mb-0"><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}</p>
+                <p class="card-text mb-0"><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}</p>
+                <p class="card-text mb-0"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}</p>
             </div>
     `;
     phoneDetails.appendChild(div);
