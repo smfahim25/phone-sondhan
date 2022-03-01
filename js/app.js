@@ -20,7 +20,7 @@ const displaySearchResult = phones => {
             <img class="container w-75" src="${phone.image}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">${phone.phone_name}</h5>
-            <p class="card-text">${phone.brand}</p>
+            <p class="card-text">Brand: ${phone.brand}</p>
             </div>
         </div>
         `;
