@@ -23,7 +23,7 @@ const displaySearchResult = phones => {
             <div class="card-body ms-3">
             <h5 class="card-title">${phone.phone_name}</h5>
             <p class="card-text"> <span class="fw-bold">Brand:</span> ${phone.brand}</p>
-            <button onclick="loadPhoneDetail('${phone.slug}')" class="btn btn-primary">Explore</button>
+            <a href="#" onclick="loadPhoneDetail('${phone.slug}')" class="btn btn-primary">Explore</a>
             </div>
         </div>
         `;
@@ -44,25 +44,31 @@ const displayPhoneDetails = phone => {
     div.classList.add('card');
     phoneDetails.innerHTML = '';
     div.innerHTML = `
-        <img src="${phone.image}" class="w-75 mx-auto card-img-top p-4" alt="">
-            <div class="card-body mx-auto">
-                <h5 class="card-title">${phone.name}</h5>
-                <p class="card-text mb-0"> <span class="fw-bold">Brand:</span> ${phone.brand}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">Release Date:</span> ${phone.releaseDate ? phone.releaseDate : 'Release Date Not Found'}.</p>
-                <h4 class="fw-bolder mt-2">Main Features:</h4>
-                <p class="card-text mb-0"><span class="fw-bold">Chipset:</span> ${phone.mainFeatures.chipSet}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}.</p> 
-                <p class="card-text mb-0"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.sensors.join()}.</p>
-                <h4 class="fw-bolder mt-2">Others Features:</h4>
-                <p class="card-text mb-0"><span class="fw-bold">Bluetooth:</span> ${phone.others?.Bluetooth ? phone.others.Bluetooth : 'Data not Found'}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">GPS:</span> ${phone.others?.GPS ? phone.others.GPS : 'Data not Found'}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">NFC:</span> ${phone.others?.NFC ? phone.others.NFC : 'Data not Found'}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">Radio:</span> ${phone.others?.Radio ? phone.others.Radio : 'Data not Found'}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">USB:</span> ${phone.others?.USB ? phone.others.USB : 'Data not Found'}.</p>
-                <p class="card-text mb-0"><span class="fw-bold">WLAN:</span> ${phone.others?.WLAN ? phone.others.WLAN : 'Data not Found'}.</p>
-            </div>
+    <div class="row g-0 p-3">
+        <div class="col-md-4 mt-5 mb-5">
+            <img src="${phone.image}" class="img-fluid rounded-start container" alt="">
+        </div>
+        <div class="col-md-8">
+                <div class="card-body ms-2">
+                    <h5 class="card-title fw-bolder">${phone.name}</h5>
+                    <p class="card-text"> <span class="fw-bold">Brand:</span> ${phone.brand}.</p>
+                    <p class="card-text"><span class="fw-bold">Release Date:</span> ${phone.releaseDate ? phone.releaseDate : 'Release Date Not Found'}.</p>
+                    <h4 class="fw-bolder mt-2">Main Features:</h4>
+                    <p class="card-text"><span class="fw-bold">Chipset:</span> ${phone.mainFeatures.chipSet}.</p>
+                    <p class="card-text"><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}.</p>
+                    <p class="card-text"><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}.</p>
+                    <p class="card-text"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}.</p> 
+                    <p class="card-text"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.sensors.join()}.</p>
+                    <h4 class="fw-bolder mt-2">Others Features:</h4>
+                    <p class="card-text"><span class="fw-bold">Bluetooth:</span> ${phone.others?.Bluetooth ? phone.others.Bluetooth : 'Data not Found'}.</p>
+                    <p class="card-text"><span class="fw-bold">GPS:</span> ${phone.others?.GPS ? phone.others.GPS : 'Data not Found'}.</p>
+                    <p class="card-text"><span class="fw-bold">NFC:</span> ${phone.others?.NFC ? phone.others.NFC : 'Data not Found'}.</p>
+                    <p class="card-text"><span class="fw-bold">Radio:</span> ${phone.others?.Radio ? phone.others.Radio : 'Data not Found'}.</p>
+                    <p class="card-text"><span class="fw-bold">USB:</span> ${phone.others?.USB ? phone.others.USB : 'Data not Found'}.</p>
+                    <p class="card-text"><span class="fw-bold">WLAN:</span> ${phone.others?.WLAN ? phone.others.WLAN : 'Data not Found'}.</p>
+                </div>
+        </div>
+    </div>
     `;
     phoneDetails.appendChild(div);
 }
