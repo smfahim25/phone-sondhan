@@ -17,6 +17,7 @@ const searchPhone = () => {
     // error conditon 
     if (searchText == '') {
         writeSomething('block');
+        toggoleSpinner('none');
     }
     else {
         writeSomething('none');
@@ -37,7 +38,7 @@ const displaySearchResult = phones => {
     // error condition 
     if (!phones.length) {
         NoResultsFound('block');
-        toggoleSpinner('block');
+        toggoleSpinner('none');
     }
     else {
         NoResultsFound('none');
