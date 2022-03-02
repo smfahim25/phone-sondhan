@@ -1,3 +1,4 @@
+// error message function 
 const toggoleSpinner = displayStyle => {
     document.getElementById('spinner').style.display = displayStyle;
 }
@@ -7,12 +8,13 @@ const NoResultsFound = displayStyle => {
 const writeSomething = displayStyle => {
     document.getElementById('write-something').style.display = displayStyle;
 }
+// phone search function 
 const searchPhone = () => {
     toggoleSpinner('block');
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    // console.log(searchText);
     searchField.value = '';
+    // error conditon 
     if (searchText == '') {
         writeSomething('block');
     }
@@ -21,16 +23,18 @@ const searchPhone = () => {
         NoResultsFound('none');
         toggoleSpinner('none');
     }
+    // api call 
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
-    // console.log(url);
     fetch(url)
         .then(res => res.json())
         .then(data => displaySearchResult(data.data))
 }
+// result display function 
 const displaySearchResult = phones => {
     document.getElementById('phone-details').innerHTML = '';
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
+    // error condition 
     if (!phones.length) {
         NoResultsFound('block');
         toggoleSpinner('block');
@@ -56,16 +60,16 @@ const displaySearchResult = phones => {
         toggoleSpinner('none');
     })
 }
+// phone details api call
 const loadPhoneDetail = phoneId => {
-    // console.log(phoneId);
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetails(data.data))
     toggoleSpinner('block');
 }
+// phone dteails function 
 const displayPhoneDetails = phone => {
-    // console.log(phone);
     toggoleSpinner('block');
     const phoneDetails = document.getElementById('phone-details');
     const div = document.createElement('div');
