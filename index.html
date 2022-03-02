@@ -13,6 +13,8 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- font awesome  -->
     <script src="https://kit.fontawesome.com/214c9eca36.js" crossorigin="anonymous"></script>
+    <!-- style css link -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -38,6 +40,17 @@
                 aria-label="Recipient's username" aria-describedby="button-addon2">
             <button onclick="searchPhone()" class="btn btn-outline-primary" type="button" id="button-search"><i
                     class="fas fa-search"></i></button>
+        </div>
+        <!-- spinner  -->
+        <div id="spinner" class="spinner-border mx-auto" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <!-- error message show area  -->
+        <div id="no-results" class="text-center text-danger">
+            <h2>!!Invail Input,No Results Found!!</h2>
+        </div>
+        <div id="write-something" class="text-center text-danger">
+            <h2>Please type your phone name.</h2>
         </div>
         <!-- phone details show  -->
         <div id="phone-details" class="w-75 shadow mx-auto mb-5">

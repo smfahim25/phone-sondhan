@@ -1,8 +1,26 @@
+const toggoleSpinner = displayStyle => {
+    document.getElementById('spinner').style.display = displayStyle;
+}
+const NoResultsFound = displayStyle => {
+    document.getElementById('no-results').style.display = displayStyle;
+}
+const writeSomething = displayStyle => {
+    document.getElementById('write-something').style.display = displayStyle;
+}
 const searchPhone = () => {
+    toggoleSpinner('block');
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     // console.log(searchText);
     searchField.value = '';
+    if (searchText == '') {
+        writeSomething('block');
+    }
+    else {
+        writeSomething('none');
+        NoResultsFound('none');
+        toggoleSpinner('none');
+    }
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     // console.log(url);
     fetch(url)
@@ -10,11 +28,18 @@ const searchPhone = () => {
         .then(data => displaySearchResult(data.data))
 }
 const displaySearchResult = phones => {
-    const firstTwenty = phones.slice(0, 20);
     document.getElementById('phone-details').innerHTML = '';
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
-    firstTwenty.forEach(phone => {
+    if (!phones.length) {
+        NoResultsFound('block');
+        toggoleSpinner('block');
+    }
+    else {
+        NoResultsFound('none');
+    }
+    const firstTwenty = phones.slice(0, 20);
+    firstTwenty?.forEach(phone => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = ` 
@@ -28,6 +53,7 @@ const displaySearchResult = phones => {
         </div>
         `;
         searchResult.appendChild(div);
+        toggoleSpinner('none');
     })
 }
 const loadPhoneDetail = phoneId => {
@@ -36,16 +62,18 @@ const loadPhoneDetail = phoneId => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetails(data.data))
+    toggoleSpinner('block');
 }
 const displayPhoneDetails = phone => {
-    console.log(phone);
+    // console.log(phone);
+    toggoleSpinner('block');
     const phoneDetails = document.getElementById('phone-details');
     const div = document.createElement('div');
     div.classList.add('card');
     phoneDetails.innerHTML = '';
     div.innerHTML = `
     <div class="row g-0 p-3">
-        <div class="col-md-4 mt-5 mb-5">
+        <div class="col-md-4 mt-5 p-3">
             <img src="${phone.image}" class="img-fluid rounded-start container" alt="">
         </div>
         <div class="col-md-8">
@@ -71,4 +99,5 @@ const displayPhoneDetails = phone => {
     </div>
     `;
     phoneDetails.appendChild(div);
+    toggoleSpinner('none');
 }
